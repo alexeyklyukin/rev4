@@ -1,0 +1,15 @@
+apiVersion: v1
+data:
+  # required format (w/o quotes): 'propertyNumber: value'
+  # allowed properties: 'user', 'password', 'inrole'
+  # numbers >= 1 are mandatory
+  # alternatively, supply the user: password pairs and
+  # provide other options in the configmap.
+  # rev4
+  user1: cmV2NAo=
+  password1: Z2V0dGhpbmdzZG9uZQo=
+kind: Secret
+metadata:
+  name: postgresql-infrastructure-roles
+  namespace: default
+type: Opaque

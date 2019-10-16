@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rev4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: rev4
+  template:
+    metadata:
+      labels:
+        name: rev4
+    spec:
+      containers:
+      - name: rev4
+        image: gcr.io/leafy-rope-255518/rev4:0.5
+        ports:
+         - containerPort: 8080
+        env:
+        - name: PGHOST
+          value: rev4-pg
+        - name: PGDATABASE
+          value: rev4
+        - name: PGUSER
+          valueFrom:
+            secretKeyRef:
+              name: rev4.rev4-pg.credentials
+              key: username
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: rev4.rev4-pg.credentials
+              key: password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rev4-service
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    name: rev4
+  type: LoadBalancer

@@ -1,0 +1,21 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: rev4-pg
+  namespace: default
+spec:
+  teamId: "rev4"
+  volume:
+    size: 1Gi
+  numberOfInstances: 3
+  users:
+    rev4:  # database owner
+    - superuser
+    - createdb
+  enableMasterLoadBalancer: true
+  allowedSourceRanges:
+  - 0.0.0.0/0
+  databases:
+    rev4: rev4  # dbname: owner
+  postgresql:
+    version: "11"

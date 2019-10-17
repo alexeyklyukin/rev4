@@ -1,0 +1,43 @@
+Pager usage is off.
+Null display is "∅".
+Expanded display is used automatically.
+CREATE SCHEMA
+CREATE TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+TRUNCATE TABLE
+ store_birthday 
+----------------
+ ∅
+(1 row)
+
+            retrieve_birthday_message             
+--------------------------------------------------
+ Hello, Nguyễn Văn A! Your birthday is in 76 days
+(1 row)
+
+ store_birthday 
+----------------
+ ∅
+(1 row)
+
+   retrieve_birthday_message   
+-------------------------------
+ Happy birthday, Nguyễn Văn A!
+(1 row)
+
+             retrieve_birthday_message             
+---------------------------------------------------
+ Hello, Nguyễn Văn A! Your birthday is in 365 days
+(1 row)
+
+           retrieve_birthday_message            
+------------------------------------------------
+ Hello, Nguyễn Văn A! Your birthday is in 1 day
+(1 row)
+
+   retrieve_birthday_message   
+-------------------------------
+ Happy birthday, Nguyễn Văn A!
+(1 row)
+

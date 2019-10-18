@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: rev4
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       name: rev4
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: rev4
-        image: gcr.io/leafy-rope-255518/rev4:0.5
+        image: okliukin/rev4:1.0
         ports:
          - containerPort: 8080
         env:

@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: rev4-populate-db
+  name: rev4-db-deploy
 spec:
   ttlSecondsAfterFinished: 60
   template:
@@ -9,7 +9,7 @@ spec:
       restartPolicy: "OnFailure"
       containers:
       - name: rev-db-deploy
-        image: gcr.io/leafy-rope-255518/rev-db-deploy:0.1
+        image: okliukin/rev4-db-deploy:1.0
         env:
         - name: PGHOST
           value: rev4-pg

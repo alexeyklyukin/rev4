@@ -122,6 +122,8 @@ on the manifests in the corresponding order manually.
 
 The deployment can be described with the [following diagram](res/k8s.pdf "rev4 app with HA PostgreSQL on K8s")
 
+![rev4 app with HA PostgreSQL on K8s](res/k8s.png)
+
 
 
 ## APP high-availability

@@ -24,6 +24,11 @@ func NewController(db db.Model) *Controller {
 	return &Controller{db}
 }
 
+// Just return 200, can be used as a Readiness probe
+func (ctl *Controller) Index (w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
+}
+
 // RecordBirthday is a PUT endpoint that fetches the name and the birthday date and stores it in the database
 func (ctl *Controller) RecordBirthday(w http.ResponseWriter, r *http.Request) {
 	var (

@@ -3,11 +3,11 @@ package controller
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/jackc/pgx/v4"
 	"net/http"
 	"time"
 
 	"github.com/julienschmidt/httprouter"
+	"github.com/jackc/pgx/v4"
 
 	"github.com/alexeyklyukin/rev4/pkg/db"
 )
@@ -24,6 +24,7 @@ func NewController(db db.Model) *Controller {
 	return &Controller{db}
 }
 
+// RecordBirthday is a PUT endpoint that fetches the name and the birthday date and stores it in the database
 func (ctl *Controller) RecordBirthday(w http.ResponseWriter, r *http.Request) {
 	var (
 		dateOfBirth string
@@ -37,6 +38,7 @@ func (ctl *Controller) RecordBirthday(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Depending on the content-type we could get the parameters either as JSON, or as a form.
 	contentType := r.Header.Get(HTTPHeaderContentType)
 	if hasMIMETYPE(contentType, MIMETypeJSON) {
 		decoder := json.NewDecoder(r.Body)
@@ -80,6 +82,7 @@ func (ctl *Controller) RecordBirthday(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 }
 
+// TellBirthday is a GET endpoint that returns the birthday of a person whose name is passed in the GET query string
 func (ctl *Controller) TellBirthday(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
 	if err != nil {

@@ -66,7 +66,7 @@ gcloud container clusters create --region europe-west3 test-cluster --num-nodes=
 Note that free tier is limited by 8 IP addresses, so we have to limit the number
 of nodes. The limit doesn't exist or liftable on the paid tier.
 
-Once the cluster is there, we'll use kubectl -k (or kustomize) to deploy our DB
+Once the cluster is there, we'll use `kubectl -k` (or kustomize) to deploy our DB
 in the APP. The Postgres databases will be managed by the postgres operator
 (github.com/zalando/postgres-operator), that will create an HA cluster of 3
 nodes from the CRD (located in manifests/pg/rev4-pg.yaml) and will maintain the
@@ -115,9 +115,9 @@ AWS route53 or Cloud DNS.
 
 ```
 
-If kubectl -k is not available (requires kubectl 1.14 or higher), look at
-kustomize.yaml in manifests/app and manifests/pg and run kubectl create -f
-on the manifests in the corresponding order manually.
+If `kubectl -k` is not available (requires kubectl 1.14 or higher), look at
+`kustomize.yaml` in `manifests/app` and `manifests/pg` and run `kubectl create -f`
+on the invidual manifests in the way specified in kustomize.yaml
 
 
 The deployment can be described with the [following diagram](res/k8s.pdf "rev4 app with HA PostgreSQL on K8s")
@@ -149,7 +149,7 @@ access to an S3 bucket. When used in production, one should setup WAL bucket
 for the Postgres pods in order to support recovering when all running pods are
 down, pg_rewind and running a standby cluster.
 
-Right now, the DB is set with service set to the Load balancer, to accomodate
+Right now, the DB is set with the service type set to the Load balancer, to accomodate
 a potential standby cluster in another region. In production, the range of
 addresses that are allowed to connect should be limited to the absolute minimum
 by changing the ``allowedSourceRanges`` of the LB.
@@ -173,7 +173,7 @@ options. In practice, the failure of the whole region is a major event and
 typically requires manual coordination anyway. It's enough to have the copy of
 the data outside of the region (with a standby cluster or an S3 bucket) and have
 procedures to switchover/failover manually. The reliable cross-region failover
-could be possible between regions that are not too far away latency-wise (i.e
+could be implemented between regions that are not too far away latency-wise (i.e
 Germany/Belgium), but would require running in at least 3 such regions and
 therefore, typically impractical.
 

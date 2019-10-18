@@ -137,6 +137,10 @@ It's trivial to bump it up to a higher number, or reduce it to 1 for testing,
 just change the number of replicas in the manifests/app/deployment.yaml and do
 ```kubectl apply -f manifests/app/deployment.yaml```
 
+The manifest configures the `readinessProbe` and the `rollingUpdate` strategy.
+When updating the app, Kubernetes will make sure the pods are not terminated all
+at once and there are active app instances serving requests during update.
+
 ## DB High-Availability.
 
 Postgres-operator spawns Postgres cluster with 3 pods in a statefulset, byt

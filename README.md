@@ -122,16 +122,18 @@ on the manifests in the corresponding order manually.
 
 The deployment can be described with the [following diagram](res/k8s.pdf "rev4 app with HA PostgreSQL on K8s")
 
+![rev4 app with HA PostgreSQL on K8s](res/k8s.png)
 
 
-## APP high-availability
+
+## APP High-Availability
 
 For simplicity, the app deployment is set to 2 instances by default.
 It's trivial to bump it up to a higher number, or reduce it to 1 for testing,
 just change the number of replicas in the manifests/app/deployment.yaml and do
 ```kubectl apply -f manifests/app/deployment.yaml```
 
-## DB High-availability.
+## DB High-Availability.
 
 Postgres-operator spawns Postgres cluster with 3 pods in a statefulset, byt
 default spread over available zones. If the primary dies, Patroni on standbys
@@ -154,11 +156,13 @@ It's possible to setup a standby cluster, however, due to reliance on the S3
 bucket this is not implemented (see
 https://postgres-operator.readthedocs.io/en/latest/user/#setting-up-a-standby-cluster)
 
+The possible setup can be illustrated by the [following diagram](res/multi-region.pdf)
+![Multri-region stadnby cluster](res/multi-region.png)
+
 It's possible to configure streaming replication for the standby cluster, but it
 involves customizing postgres pod manually, since postgres-operator doesn't
 support that in the moment. It relies on the Patroni standby cluster feature
 (https://patroni.readthedocs.io/en/latest/replica_bootstrap.html#standby-cluster).
-
 
 DB cross-region automatic failover is not implemented in either of those
 options. In practice, the failure of the whole region is a major event and

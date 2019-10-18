@@ -124,6 +124,8 @@ The deployment can be described with the [following diagram](res/k8s.pdf "rev4 a
 
 ![rev4 app with HA PostgreSQL on K8s](res/k8s.png)
 
+Note that it doesn't show the intial deployment via the K8s job, as I hit the
+limit on the number of objects on lucidchart diagram free layet.
 
 
 ## APP High-Availability

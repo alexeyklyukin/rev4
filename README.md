@@ -127,6 +127,8 @@ The deployment can be described with the [following diagram](res/k8s.pdf "rev4 a
 Note that it doesn't show the intial deployment via the K8s job, as I hit the
 limit on the number of objects on lucidchart diagram free layet.
 
+In production environment one would preferrably use CI/CD or github hooks instead
+of deploying the setup manually.
 
 ## APP High-Availability
 

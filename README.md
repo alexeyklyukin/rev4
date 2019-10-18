@@ -100,7 +100,7 @@ kubectl get svc rev4-service -o jsonpath="{.status.loadBalancer.ingress[0].ip}"
 # Content-Length: 0
 #Date: Fri, 18 Oct 2019 10:03:47 GMT
 
-#http -j 34.89.148.109:8080/hello?name=bill
+#http -j 1.1.1.1:8080/hello?name=bill
 #HTTP/1.1 200 OK
 #Content-Length: 56
 #Content-Type: application/json

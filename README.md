@@ -120,7 +120,8 @@ kustomize.yaml in manifests/app and manifests/pg and run kubectl create -f
 on the manifests in the corresponding order manually.
 
 
-The deployment can be described with the following diagram.
+The deployment can be described with the [following diagram](res/k8s.pdf "rev4 app with HA PostgreSQL on K8s")
+
 
 
 ## APP high-availability

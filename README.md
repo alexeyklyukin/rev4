@@ -143,7 +143,7 @@ at once and there are active app instances serving requests during update.
 
 ## DB High-Availability.
 
-Postgres-operator spawns Postgres cluster with 3 pods in a statefulset, byt
+Postgres-operator spawns Postgres cluster with 3 pods in a statefulset, by
 default spread over available zones. If the primary dies, Patroni on standbys
 will initiate the leader race and promote the new primary, while the previous
 one will be respawned as a replica by the statefulset.

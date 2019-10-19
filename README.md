@@ -156,7 +156,9 @@ down, pg_rewind and running a standby cluster.
 Right now, the DB is set with the service type set to the Load balancer, to accomodate
 a potential standby cluster in another region. In production, the range of
 addresses that are allowed to connect should be limited to the absolute minimum
-by changing the ``allowedSourceRanges`` of the LB.
+by changing the ``allowedSourceRanges`` of the LB. Alternatively, if connection
+from outside of the cluster is not required, the service type should be set to
+the `ClusterIP` (default) instead of the `LoadBalancer`.
 
 ### DB-cross-region availability.
 

@@ -68,7 +68,7 @@ of nodes. The limit doesn't exist or liftable on the paid tier.
 
 Once the cluster is there, we'll use `kubectl -k` (or kustomize) to deploy our DB
 in the APP. The Postgres databases will be managed by the postgres operator
-(github.com/zalando/postgres-operator), that will create an HA cluster of 3
+(https://github.com/zalando/postgres-operator), that will create an HA cluster of 3
 nodes from the CRD (located in manifests/pg/rev4-pg.yaml) and will maintain the
 defined cluster configuration. The replicas are streaming, minimizing the lag
 and the auto-failover is provided by Patroni

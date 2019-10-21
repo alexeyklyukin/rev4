@@ -130,6 +130,21 @@ limit on the number of objects on lucidchart diagram free layer.
 In production environment one would preferrably use CI/CD or github hooks instead
 of deploying the setup manually.
 
+## Local testing
+
+One can run unit-tests for the app with `go test -v ./...`. There are database
+tests at `sql/test.sh` (they require setting libpq variables lile `PGDATBASE` and
+`PGHOST` in order to specify the datasbase conneciton).
+
+It's possible to test the whole app, postgres operator and the database setup by
+running Kubernetes locally in `kindl` or `minikube`.
+
+One can test the app itself against the local PostgreSQL setup by running a
+docker container, exposting the app port and setting libpq environment variables
+to connect to the DB, i.e.
+
+`docker run -e PGDATABASE=postgres -e PGHOST=host.docker.internal -e PGUSER=postgres -p 8080:8080  okliukin/rev4:1.8`
+
 ## APP High-Availability
 
 For simplicity, the app deployment is set to 3 instances by default.
